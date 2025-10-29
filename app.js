@@ -37,9 +37,10 @@ botaoBuscar.addEventListener("click", async () => {
 
     const { temperature, windspeed } = weatherData.current_weather;
 
-    let emoji = "🌤";
+    // Emoji que muda com base na temperatura
+    let emoji = "🌼";
     if (temperature >= 30) emoji = "☀️";
-    else if (temperature < 20) emoji = "🌧";
+    else if (temperature <= 20) emoji = "❄️";
 
     const mensagem = `${emoji} Em ${name}, ${country}, a temperatura atual é de ${temperature}°C e o vento está a ${windspeed} km/h.`;
 
@@ -48,10 +49,13 @@ botaoBuscar.addEventListener("click", async () => {
     // Estilo visual com base na temperatura
     if (temperature >= 30) {
       resultado.style.backgroundColor = "#ffe5e5"; // quente
+      document.body.style.backgroundColor = "#fce3dc";
     } else if (temperature < 20) {
       resultado.style.backgroundColor = "#e0f0ff"; // frio
+      document.body.style.backgroundColor = "#dcf5fc";
     } else {
       resultado.style.backgroundColor = "#e5ffe5"; // ameno
+      document.body.style.backgroundColor = "#f4fced";
     }
 
   } catch (error) {
